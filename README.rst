@@ -23,14 +23,14 @@ Run
 
 .. code-block:: bash
 
-    $ ./crawler.py
+    $ python crawler.py
 
 Test
 ----
 
 .. code-block:: bash
 
-    $ ./test.py
+    $ python test.py
 
 Source code check
 -----------------
