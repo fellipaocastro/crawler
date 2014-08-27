@@ -4,7 +4,7 @@ Crawler
 Crawler that looks for the following store's products and saves their name,
 title and URL in a CSV file without duplicated entries.
 
-Época Cosméticos Perfumaria <`<http://www.epocacosmeticos.com.br>`_>
+Época Cosméticos Perfumaria - `<http://www.epocacosmeticos.com.br>`_
 
 Requirements
 ------------
