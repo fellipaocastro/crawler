@@ -1,0 +1,16 @@
+Scrapy==0.24.4
+Twisted==14.0.0
+cffi==0.8.6
+cryptography==0.5.4
+cssselect==0.9.1
+flake8==2.2.3
+lxml==3.3.5
+mccabe==0.2.1
+pep8==1.5.7
+pyOpenSSL==0.14
+pycparser==2.10
+pyflakes==0.8.1
+queuelib==1.2.2
+six==1.7.3
+w3lib==1.10.0
+zope.interface==4.1.1
