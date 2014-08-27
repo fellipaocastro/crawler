@@ -8,40 +8,40 @@ title and URL in a CSV file without duplicated entries.
 
 .. |store_link| raw:: html
 
-      <a href="http://www.epocacosmeticos.com.br" target="_blank">Época Cosméticos Perfumaria</a>
+   <a href="http://www.epocacosmeticos.com.br" target="_blank">Época Cosméticos Perfumaria</a>
 
 Requirements
 ------------
 
 .. code-block:: bash
 
-    Python 2.7.8
-    pip 1.5.6
+   Python 2.7.8
+   pip 1.5.6
 
 Setup
 -----
 
 .. code-block:: bash
 
-    $ pip install -r requirements.txt
+   $ pip install -r requirements.txt
 
 Run
 ---
 
 .. code-block:: bash
 
-    $ python crawler.py
+   $ python crawler.py
 
 Test
 ----
 
 .. code-block:: bash
 
-    $ nosetests --with-spec --spec-color test.py
+   $ nosetests --with-spec --spec-color test.py
 
 Source code check
 -----------------
 
 .. code-block:: bash
 
-    $ flake8 . --verbose
+   $ flake8 . --verbose
