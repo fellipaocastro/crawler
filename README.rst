@@ -37,4 +37,4 @@ Source code check
 
 .. code-block:: bash
 
-    $ flake8 . -v
+    $ flake8 . --verbose
