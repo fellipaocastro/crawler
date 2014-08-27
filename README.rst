@@ -1,8 +1,8 @@
 Crawler
 =======
 
-Crawler that looks for all Época Cosméticos' products and saves their name,
-title and URL into a CSV file without duplicated entries.
+Crawler that looks for Época Cosméticos' products and saves their name, title
+and URL in a CSV file without duplicated entries.
 
 URL: `<http://www.epocacosmeticos.com.br>`_
 
