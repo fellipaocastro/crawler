@@ -6,7 +6,7 @@ title and URL in a CSV file without duplicated entries.
 
 |store_link|
 
-.. |location_link| raw:: html
+.. |store_link| raw:: html
 
       <a href="http://www.epocacosmeticos.com.br" target="_blank">Época Cosméticos Perfumaria</a>
 
