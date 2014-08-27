@@ -30,11 +30,11 @@ Test
 
 .. code-block:: bash
 
-    $ python test.py
+    $ nosetests --with-spec --spec-color test.py
 
 Source code check
 -----------------
 
 .. code-block:: bash
 
-    $ flake8 .
+    $ flake8 . -v
