@@ -26,7 +26,7 @@ Run
 
 .. code-block:: bash
 
-   $ python crawler.py
+   $ scrapy crawl ecp -o ecp.csv
 
 Test
 ----
