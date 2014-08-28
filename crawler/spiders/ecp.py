@@ -2,6 +2,8 @@
 
 import scrapy
 
+from crawler.items import EcpItem
+
 
 class EcpSpider(scrapy.Spider):
     name = "ecp"
@@ -9,10 +11,9 @@ class EcpSpider(scrapy.Spider):
     start_urls = ["http://www.epocacosmeticos.com.br/perfumes"]
 
     def parse(self, response):
-        filename = "ecp.csv"
-        with open(filename, 'wb') as f:
-            for sel in response.css('h3 > a[href$="/p"]'):
-                name = sel.xpath('text()').extract()
-                url = sel.xpath('@href').extract()
-                title = sel.xpath('@title').extract()
-                f.write("%s - %s - %s\n\n" % (name, url, title))
+        for sel in response.css('h3 > a[href$="/p"]'):
+            item = EcpItem()
+            item['name'] = sel.xpath('text()').extract()
+            item['title'] = sel.xpath('@title').extract()
+            item['url'] = sel.xpath('@href').extract()
+            yield item
