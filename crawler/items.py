@@ -14,3 +14,5 @@ class EcpItem(scrapy.Item):
     name = scrapy.Field()
     title = scrapy.Field()
     url = scrapy.Field()
+    visit_id = scrapy.Field()
+    visit_status = scrapy.Field()

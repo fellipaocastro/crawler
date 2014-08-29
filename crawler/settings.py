@@ -12,6 +12,9 @@ BOT_NAME = 'crawler'
 
 SPIDER_MODULES = ['crawler.spiders']
 NEWSPIDER_MODULE = 'crawler.spiders'
+SPIDER_MIDDLEWARES = {
+    'crawler.middlewares.IgnoreVisitedItems': 543,
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the
 # user-agent

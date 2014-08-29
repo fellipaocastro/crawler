@@ -11,19 +11,27 @@ class EcpSpider(scrapy.Spider):
     start_urls = ["http://www.epocacosmeticos.com.br/marcas"]
 
     def parse(self, response):
-        self.log("Visited %s" % response.url)
+        self.log("parse: %s" % response.url)
         for sel in response.css('#marcas > div > .menu-departamento > \
 .brandFilter > ul > li > a'):
-            return scrapy.Request(
+            yield scrapy.Request(
                 sel.xpath('@href').extract()[0],
                 callback=self.parse_brand
             )
 
     def parse_brand(self, response):
-        self.log("Visited %s" % response.url)
+        self.log("parse_brand %s" % response.url)
         for sel in response.css('h3 > a[href$="/p"]'):
-            item = EcpItem()
-            item['name'] = sel.xpath('text()').extract()
-            item['title'] = sel.xpath('@title').extract()
-            item['url'] = sel.xpath('@href').extract()
-            yield item
+            yield scrapy.Request(
+                sel.xpath('@href').extract()[0],
+                callback=self.parse_product
+            )
+
+    def parse_product(self, response):
+        self.log("parse_product %s" % response.url)
+        item = EcpItem()
+        item['name'] = response.css('div.productName[itemprop="name"]::text')\
+            .extract()
+        item['title'] = response.css('title::text').extract()
+        item['url'] = response.url
+        yield item
