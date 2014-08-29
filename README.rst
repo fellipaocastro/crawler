@@ -26,7 +26,7 @@ Usage
 
 .. code-block:: bash
 
-   $ scrapy crawl ecp -o ecp.csv
+   $ ./run.sh
 
 Test
 ----
