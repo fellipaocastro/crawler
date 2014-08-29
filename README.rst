@@ -27,6 +27,8 @@ Usage
 
    $ ./manage.sh run
 
+The output is saved into the ecp.csv file in this project's root path.
+
 Test
 ----
 
