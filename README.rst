@@ -21,8 +21,8 @@ Setup
 
    $ pip install -r requirements.txt
 
-Run
----
+Usage
+-----
 
 .. code-block:: bash
 
