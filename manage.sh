@@ -17,6 +17,5 @@ case $1 in
         echo "Available commands:"
         echo "  run           Start the crawler"
         echo "  check         Run flake8 source code checker"
-        echo "  help          Help"
         ;;
  esac
