@@ -27,7 +27,15 @@ Usage
 
    $ ./manage.sh run
 
-The output is saved into the ecp.csv file in this project's root path.
+Output
+------
+
+    /tmp/ecp.csv
+
+Log
+---
+
+    /tmp/crawler-YYYY-MM-DD.log (e.g. /tmp/crawler-2014-08-29.log)
 
 Test
 ----

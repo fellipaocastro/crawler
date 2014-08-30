@@ -1,9 +1,12 @@
 #!/bin/bash
 
+CSV_FILE="/tmp/ecp.csv"
+LOG_FILE="/tmp/crawler-`date +%Y-%m-%d`.log"
+
 case $1 in
     run)
-        rm ecp.csv &> /dev/null
-        scrapy crawl ecp -o ecp.csv
+        rm $CSV_FILE >> $LOG_FILE 2>&1
+        scrapy crawl ecp -o $CSV_FILE >> $LOG_FILE 2>&1
         ;;
     check)
         flake8 . --verbose
