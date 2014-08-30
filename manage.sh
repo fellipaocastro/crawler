@@ -5,8 +5,8 @@ LOG_FILE="/tmp/crawler-`date +%Y-%m-%d`.log"
 
 case $1 in
     run)
-        # rm $CSV_FILE >> $LOG_FILE 2>&1
-        # scrapy crawl ecp -o $CSV_FILE >> $LOG_FILE 2>&1
+        rm $CSV_FILE >> $LOG_FILE 2>&1
+        scrapy crawl ecp -o $CSV_FILE >> $LOG_FILE 2>&1
         if [ -f $CSV_FILE ]; then
             TOTAL_ITEMS=$[$(wc -l < $CSV_FILE | sed -e 's/^[ \t]*//')-1]
             if [ $TOTAL_ITEMS -gt 0 ]; then
