@@ -41,6 +41,10 @@ Log
 
     /tmp/crawler-YYYY-MM-DD.log (e.g. /tmp/crawler-2014-08-29.log)
 
+.. code-block:: bash
+
+   $ ./manage.sh log
+
 Test
 ----
 

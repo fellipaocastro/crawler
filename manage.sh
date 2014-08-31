@@ -23,6 +23,9 @@ case $1 in
     check)
         flake8 . --verbose
         ;;
+    log)
+        tail -F $LOG_FILE
+        ;;
     *)
         echo "Crawler"
         echo ""
@@ -34,5 +37,6 @@ case $1 in
         echo "  test          Run the test suit"
         echo "  read          Read the generated csv file"
         echo "  check         Run flake8 source code checker"
+        echo "  log           Tail the log file"
         ;;
  esac
