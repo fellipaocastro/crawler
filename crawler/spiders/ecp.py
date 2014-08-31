@@ -32,23 +32,23 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
 
             self.total_brands += 1
 
-            self.log("Brand: %s" % self.sanitize(sel.xpath("text()")
-                                                    .extract()[0]))
+            self.log("Brand: %s" % EcpSpider.sanitize(sel.xpath("text()")
+                                                         .extract()[0]))
 
             self.log("self.total_brands: %s" % self.total_brands)
 
             yield scrapy.Request(
-                self.sanitize(sel.xpath("@href").extract()[0]),
+                EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
                 callback=self.parse_brand
             )
 
     def parse_brand(self, response):
         self.log("parse_brand: %s" % response.url)
 
-        brand_name = self.sanitize(response.css(
+        brand_name = EcpSpider.sanitize(response.css(
             "div.bread-crumb > ul > li.last > strong > a::text").extract()[0])
 
-        brand_total_products = int(self.sanitize(response.css(
+        brand_total_products = int(EcpSpider.sanitize(response.css(
             "span.resultado-busca-numero > span.value::text").extract()[0]))
 
         self.store_total_products += brand_total_products
@@ -59,7 +59,7 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
             brand_name,
             brand_total_products))
 
-        fq = re.search("q=(.+)\&P", self.sanitize(response.css(
+        fq = re.search("q=(.+)\&P", EcpSpider.sanitize(response.css(
             "script").extract()[45])).group(1)
 
         self.log("fq: %s" % fq)
@@ -69,7 +69,7 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
             for sel in response.css('h3 > a[href$="/p"]'):
 
                 yield scrapy.Request(
-                    self.sanitize(sel.xpath("@href").extract()[0]),
+                    EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
                     callback=self.parse_product
                 )
         else:
@@ -90,7 +90,7 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
         for sel in response.css('h3 > a[href$="/p"]'):
 
             yield scrapy.Request(
-                self.sanitize(sel.xpath("@href").extract()[0]),
+                EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
                 callback=self.parse_product
             )
 
@@ -99,15 +99,16 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
 
         item = EcpItem()
 
-        item["name"] = self.sanitize(response.css(
+        item["name"] = EcpSpider.sanitize(response.css(
             'div.productName[itemprop="name"]::text').extract()[0])
 
-        item["title"] = self.sanitize(response.css(
+        item["title"] = EcpSpider.sanitize(response.css(
             "title::text").extract()[0])
 
         item["url"] = response.url
 
         yield item
 
-    def sanitize(self, s):
+    @staticmethod
+    def sanitize(s):
         return s.strip().replace("\n", "")
