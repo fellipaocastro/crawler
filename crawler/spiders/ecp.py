@@ -32,6 +32,9 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
 
             self.total_brands += 1
 
+            self.log("Brand: %s" % self.sanitize(sel.xpath("text()")
+                                                    .extract()[0]))
+
             self.log("self.total_brands: %s" % self.total_brands)
 
             yield scrapy.Request(
