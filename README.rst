@@ -32,6 +32,10 @@ Output
 
     /tmp/ecp.csv
 
+.. code-block:: bash
+
+   $ ./manage.sh read
+
 Log
 ---
 
@@ -42,7 +46,7 @@ Test
 
 .. code-block:: bash
 
-   $ nosetests --with-spec --spec-color test.py
+   $ ./manage.sh test
 
 Source code check
 -----------------
