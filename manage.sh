@@ -14,6 +14,9 @@ case $1 in
             fi
         fi
         ;;
+    read)
+        python reader.py $CSV_FILE
+        ;;
     check)
         flake8 . --verbose
         ;;
@@ -25,6 +28,7 @@ case $1 in
         echo ""
         echo "Available commands:"
         echo "  run           Start the crawler"
+        echo "  read          Read the generated csv file"
         echo "  check         Run flake8 source code checker"
         ;;
  esac
