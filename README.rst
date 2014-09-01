@@ -1,11 +1,12 @@
 Crawler
 =======
 
-This is a crawler that scrapes products from
+This is a crawler that scrapes items from
 `Época Cosméticos Perfumaria <http://www.epocacosmeticos.com.br>`_ store and
 saves their name, title and URL in a CSV file without duplicated entries.
 
-The items scraped by this project are products, and the item is defined in the class:
+The items scraped by this project are products, and the item is defined in the
+class:
 
     crawler.items.EcpItem
 

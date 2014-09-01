@@ -10,7 +10,7 @@ case $1 in
         if [ -f $CSV_FILE ]; then
             TOTAL_ITEMS=$[$(wc -l < $CSV_FILE | sed -e 's/^[ \t]*//')-1]
             if [ $TOTAL_ITEMS -gt 0 ]; then
-                echo "Stored csv feed ($TOTAL_ITEMS items) in: /tmp/ecp.csv"
+                echo "Stored csv feed ($TOTAL_ITEMS items) in: $CSV_FILE"
             fi
         fi
         ;;
