@@ -2,10 +2,11 @@
 
 CSV_FILE="/tmp/ecp.csv"
 LOG_FILE="/tmp/crawler-`date +%Y-%m-%d`.log"
+ROOT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 case $1 in
     setup)
-        pip install -r requirements.txt
+        pip install -r $ROOT_PATH/requirements.txt
         ;;
     run)
         rm $CSV_FILE >> $LOG_FILE 2>&1
@@ -18,7 +19,7 @@ case $1 in
         fi
         ;;
     read)
-        ./crawler/reader.py $CSV_FILE
+        .$ROOT_PATH/reader.py $CSV_FILE
         ;;
     log)
         tail -F $LOG_FILE
@@ -27,7 +28,7 @@ case $1 in
         nosetests --with-spec --spec-color crawler.tests
         ;;
     check)
-        flake8 . --verbose
+        flake8 $ROOT_PATH --verbose
         ;;
     *)
         echo "Crawler"
