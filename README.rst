@@ -29,7 +29,7 @@ Setup
 
 .. code-block:: bash
 
-    $ pip install -r requirements.txt
+    $ ./manage.sh setup
 
 Usage
 -----

@@ -4,6 +4,9 @@ CSV_FILE="/tmp/ecp.csv"
 LOG_FILE="/tmp/crawler-`date +%Y-%m-%d`.log"
 
 case $1 in
+    setup)
+        pip install -r requirements.txt
+        ;;
     run)
         rm $CSV_FILE >> $LOG_FILE 2>&1
         scrapy crawl ecp -o $CSV_FILE >> $LOG_FILE 2>&1
@@ -14,17 +17,17 @@ case $1 in
             fi
         fi
         ;;
-    test)
-        nosetests --with-spec --spec-color crawler.tests
-        ;;
     read)
         ./crawler/reader.py $CSV_FILE
         ;;
-    check)
-        flake8 . --verbose
-        ;;
     log)
         tail -F $LOG_FILE
+        ;;
+    test)
+        nosetests --with-spec --spec-color crawler.tests
+        ;;
+    check)
+        flake8 . --verbose
         ;;
     *)
         echo "Crawler"
@@ -33,10 +36,11 @@ case $1 in
         echo "  ./manage.sh <command>"
         echo ""
         echo "Available commands:"
+        echo "  setup         Install dependencies"
         echo "  run           Start the crawler"
-        echo "  test          Run the test suit"
         echo "  read          Read the generated csv file"
-        echo "  check         Run flake8 source code checker"
         echo "  log           Tail the log file"
+        echo "  test          Run the test suit"
+        echo "  check         Run flake8 source code checker"
         ;;
  esac
