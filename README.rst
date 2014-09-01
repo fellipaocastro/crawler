@@ -39,7 +39,7 @@ Output
 Log
 ---
 
-    /tmp/crawler-YYYY-MM-DD.log (e.g. /tmp/crawler-2014-08-29.log)
+    /tmp/crawler-YYYY-MM-DD.log (e.g. /tmp/crawler-2014-09-01.log)
 
 .. code-block:: bash
 
