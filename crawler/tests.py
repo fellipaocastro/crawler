@@ -3,7 +3,7 @@
 
 import unittest
 
-from spiders.ecp import EcpSpider
+from crawler.spiders.ecp import EcpSpider
 
 
 class EcpSpiderTestCase(unittest.TestCase):
