@@ -20,8 +20,8 @@ See the source code for more details.
 Requirements
 ------------
 
-    Python 2.7.8
-    pip 1.5.6
+    - Python 2.7.8
+    - pip 1.5.6
 
 Setup
 -----
