@@ -13,7 +13,7 @@ This project contains one spider called ``ecp`` that you can see by running:
 
 .. code-block:: bash
 
-   scrapy list
+   $ scrapy list
 
 See the source code for more details.
 
