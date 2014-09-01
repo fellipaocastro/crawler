@@ -20,10 +20,8 @@ See the source code for more details.
 Requirements
 ------------
 
-.. code-block:: bash
-
-   Python 2.7.8
-   pip 1.5.6
+    Python 2.7.8
+    pip 1.5.6
 
 Setup
 -----
