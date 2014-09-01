@@ -5,6 +5,16 @@ This is a crawler that scrapes products from
 `Época Cosméticos Perfumaria <http://www.epocacosmeticos.com.br>`_ store and
 saves their name, title and URL in a CSV file without duplicated entries.
 
+The items scraped by this project are websites, and the item is defined in theclass:
+
+    crawler.items.EcpItem
+
+This project contains one spider called ``ecp`` that you can see by running:
+
+    scrapy list
+
+See the source code for more details.
+
 Requirements
 ------------
 
