@@ -13,29 +13,29 @@ This project contains one spider called ``ecp`` that you can see by running:
 
 .. code-block:: bash
 
-   $ scrapy list
+$ scrapy list
 
 See the source code for more details.
 
 Requirements
 ------------
 
-    - Python 2.7.8
-    - pip 1.5.6
+- Python 2.7.8
+- pip 1.5.6
 
 Setup
 -----
 
 .. code-block:: bash
 
-   $ pip install -r requirements.txt
+$ pip install -r requirements.txt
 
 Usage
 -----
 
 .. code-block:: bash
 
-   $ ./manage.sh run
+$ ./manage.sh run
 
 Output
 ------
