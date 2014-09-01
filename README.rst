@@ -11,7 +11,9 @@ The items scraped by this project are websites, and the item is defined in thecl
 
 This project contains one spider called ``ecp`` that you can see by running:
 
-    scrapy list
+.. code-block:: bash
+
+   scrapy list
 
 See the source code for more details.
 
