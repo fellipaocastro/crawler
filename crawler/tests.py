@@ -15,7 +15,7 @@ class EcpSpiderTestCase(unittest.TestCase):
 
         self.assertEqual(sanitized_s, expected_s)
 
-    def test_sanitize_removes_any_newline_characters(self):
+    def test_sanitize_removes_all_newline_characters(self):
         s = "    \n         word1 \n\nword2     \n\n\n "
         expected_s = "word1 word2"
 
