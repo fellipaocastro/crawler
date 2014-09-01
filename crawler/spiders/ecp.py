@@ -17,7 +17,9 @@ class EcpSpider(scrapy.Spider):
 
     start_urls = ["%s/marcas" % site_url]
 
-    ajax_page_url = site_url + "/buscapagina?fq=%s&PS=50&\
+    products_per_page = 50
+
+    ajax_page_url = "%s/buscapagina?fq=%s&PS=%s&\
 sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
 
     total_brands = 0
@@ -39,8 +41,7 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
 
             yield scrapy.Request(
                 EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
-                callback=self.parse_brand
-            )
+                callback=self.parse_brand)
 
     def parse_brand(self, response):
         self.log("parse_brand: %s" % response.url)
@@ -64,25 +65,15 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
 
         self.log("fq: %s" % fq)
 
-        if brand_total_products <= 20:
+        brand_total_pages = int(math.ceil(
+            float(brand_total_products) / float(self.products_per_page)))
 
-            for sel in response.css('h3 > a[href$="/p"]'):
+        for i in range(1, brand_total_pages + 1):
 
-                yield scrapy.Request(
-                    EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
-                    callback=self.parse_product
-                )
-        else:
-
-            brand_total_pages = int(math.ceil(
-                float(brand_total_products / 50.0)))
-
-            for i in range(1, brand_total_pages + 1):
-
-                yield scrapy.Request(
-                    self.ajax_page_url % (fq, i),
-                    callback=self.parse_ajax_brand_page
-                )
+            yield scrapy.Request(
+                self.ajax_page_url % (
+                    self.site_url, fq, self.products_per_page, i),
+                callback=self.parse_ajax_brand_page)
 
     def parse_ajax_brand_page(self, response):
         self.log("parse_ajax_brand_page: %s" % response.url)
@@ -91,8 +82,7 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
 
             yield scrapy.Request(
                 EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
-                callback=self.parse_product
-            )
+                callback=self.parse_product)
 
     def parse_product(self, response):
         self.log("parse_product: %s" % response.url)
