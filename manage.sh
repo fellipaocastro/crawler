@@ -19,7 +19,7 @@ case $1 in
         fi
         ;;
     read)
-        .$ROOT_PATH/reader.py $CSV_FILE
+        $ROOT_PATH/reader.py $CSV_FILE
         ;;
     log)
         tail -F $LOG_FILE
