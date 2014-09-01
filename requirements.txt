@@ -2,12 +2,15 @@ Scrapy==0.24.4
 Twisted==14.0.0
 cffi==0.8.6
 characteristic==14.1.0
+colorama==0.3.1
 cryptography==0.5.4
 cssselect==0.9.1
 flake8==2.2.3
 lxml==3.3.5
 mccabe==0.2.1
+nose==1.3.4
 pep8==1.5.7
+pinocchio==0.4.1
 pyOpenSSL==0.14
 pyasn1==0.1.7
 pyasn1-modules==0.0.5
@@ -17,4 +20,5 @@ queuelib==1.2.2
 service-identity==14.0.0
 six==1.7.3
 w3lib==1.10.0
+wsgiref==0.1.2
 zope.interface==4.1.1
