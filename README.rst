@@ -13,7 +13,7 @@ This project contains one spider called ``ecp`` that you can see by running:
 
 .. code-block:: bash
 
-$ scrapy list
+    $ scrapy list
 
 See the source code for more details.
 
@@ -28,14 +28,14 @@ Setup
 
 .. code-block:: bash
 
-$ pip install -r requirements.txt
+    $ pip install -r requirements.txt
 
 Usage
 -----
 
 .. code-block:: bash
 
-$ ./manage.sh run
+    $ ./manage.sh run
 
 Output
 ------
@@ -44,7 +44,7 @@ Output
 
 .. code-block:: bash
 
-   $ ./manage.sh read
+    $ ./manage.sh read
 
 Log
 ---
@@ -53,18 +53,18 @@ Log
 
 .. code-block:: bash
 
-   $ ./manage.sh log
+    $ ./manage.sh log
 
 Test
 ----
 
 .. code-block:: bash
 
-   $ ./manage.sh test
+    $ ./manage.sh test
 
 Source code check
 -----------------
 
 .. code-block:: bash
 
-   $ ./manage.sh check
+    $ ./manage.sh check
