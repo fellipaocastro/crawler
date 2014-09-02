@@ -6,6 +6,7 @@ import math
 import scrapy
 
 from crawler.items import EcpItem
+from crawler.patterns import patterns
 
 
 class EcpSpider(scrapy.Spider):
@@ -29,28 +30,28 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
     def parse(self, response):
         self.log("parse: %s" % response.url)
 
-        for sel in response.css("#marcas > div > .menu-departamento > \
-.brandFilter > ul > li > a"):
+        for sel in response.css(patterns["brand_links"]):
 
             self.total_brands += 1
 
             self.log("Brand: %s" % EcpSpider.sanitize(sel.xpath(
-                "text()").extract()[0]))
+                patterns["brand_link_text"]).extract()[0]))
 
             self.log("self.total_brands: %s" % self.total_brands)
 
             yield scrapy.Request(
-                EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
+                EcpSpider.sanitize(sel.xpath(patterns["brand_link_href"])
+                                      .extract()[0]),
                 callback=self.parse_brand_page)
 
     def parse_brand_page(self, response):
         self.log("parse_brand_page: %s" % response.url)
 
         brand_name = EcpSpider.sanitize(response.css(
-            "div.bread-crumb > ul > li.last > strong > a::text").extract()[0])
+            patterns["brand_name"]).extract()[0])
 
         brand_total_products = int(EcpSpider.sanitize(response.css(
-            "span.resultado-busca-numero > span.value::text").extract()[0]))
+            patterns["brand_total_products"]).extract()[0]))
 
         self.store_total_products += brand_total_products
 
@@ -60,7 +61,7 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
             brand_name,
             brand_total_products))
 
-        fq = re.search("q=(.+)\&P", EcpSpider.sanitize(response.css(
+        fq = re.search(patterns["brand_fq"], EcpSpider.sanitize(response.css(
             "script").extract()[45])).group(1)
 
         self.log("fq: %s" % fq)
@@ -78,10 +79,11 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
     def parse_ajax_brand_page(self, response):
         self.log("parse_ajax_brand_page: %s" % response.url)
 
-        for sel in response.css('h3 > a[href$="/p"]'):
+        for sel in response.css(patterns["product_links"]):
 
             yield scrapy.Request(
-                EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
+                EcpSpider.sanitize(sel.xpath(patterns["product_link_href"])
+                                      .extract()[0]),
                 callback=self.parse_product_page)
 
     def parse_product_page(self, response):
@@ -90,10 +92,10 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
         item = EcpItem()
 
         item["name"] = EcpSpider.sanitize(response.css(
-            'div.productName[itemprop="name"]::text').extract()[0])
+            patterns["product_name"]).extract()[0])
 
         item["title"] = EcpSpider.sanitize(response.css(
-            "title::text").extract()[0])
+            patterns["product_title"]).extract()[0])
 
         item["url"] = response.url
 
