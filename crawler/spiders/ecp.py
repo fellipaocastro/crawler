@@ -41,10 +41,10 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
 
             yield scrapy.Request(
                 EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
-                callback=self.parse_brand_page)
+                callback=self.parse_brand)
 
-    def parse_brand_page(self, response):
-        self.log("parse_brand_page: %s" % response.url)
+    def parse_brand(self, response):
+        self.log("parse_brand: %s" % response.url)
 
         brand_name = EcpSpider.sanitize(response.css(
             "div.bread-crumb > ul > li.last > strong > a::text").extract()[0])
@@ -82,10 +82,10 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
 
             yield scrapy.Request(
                 EcpSpider.sanitize(sel.xpath("@href").extract()[0]),
-                callback=self.parse_product_page)
+                callback=self.parse_product)
 
-    def parse_product_page(self, response):
-        self.log("parse_product_page: %s" % response.url)
+    def parse_product(self, response):
+        self.log("parse_product: %s" % response.url)
 
         item = EcpItem()
 
