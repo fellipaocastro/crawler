@@ -61,8 +61,8 @@ sl=3d564047-8ff1-4aa8-bacd-f11730c3fce6&cc=4&sm=0&PageNumber=%s"
             brand_name,
             brand_total_products))
 
-        fq = re.search(patterns["brand_fq"], EcpSpider.sanitize(response.css(
-            "script").extract()[45])).group(1)
+        fq = EcpSpider.sanitize(re.search(patterns["brand_fq"], response.body)
+                                  .group(1))
 
         self.log("fq: %s" % fq)
 
